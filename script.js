@@ -1,7 +1,7 @@
-// Номер телефона успешно привязан
+// Ваша прямая связь с мастерами по номеру телефона
 const TELEGRAM_PHONE = '35794342974';
 
-// Словарь переводов
+// Словарь переводов на 3 языка
 const i18n = {
     ru: {
         "nav-cats": "Категории", "nav-tasks": "Все заказы", "nav-create": "Создать задание",
@@ -143,6 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
 window.respondToTask = function(taskTitle) {
     const decodedTitle = decodeURIComponent(taskTitle);
     const text = `Здравствуйте! Я хочу откликнуться на заказ: "${decodedTitle}"`;
-    // Перенаправляем пользователя в Telegram для отправки сообщения на ваш номер
+    // Прямой переход по номеру телефона в Telegram чат-поделиться
     window.open(`https://t.me{encodeURIComponent(text)}`, '_blank');
 }
