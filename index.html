@@ -5,15 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Настройки для Google -->
-    <title>Биржа Услуг и Заказов — Найдите Мастера Рядом</title>
-    <meta name="description" content="Удобный сервис поиска проверенных специалистов для любых задач: ремонт, уборка, ИТ-услуги, доставка. Опубликуйте задание за 1 минуту!">
-    <meta name="keywords" content="заказать услуги, найти мастера, сантехник, электрик, ремонт квартир, биржа заказов">
+    <title>Cyprus Help — Биржа услуг и поиска мастеров на Кипре</title>
+    <meta name="description" content="Удобный сервис поиска проверенных специалистов на Кипре. Находите мастеров для любых задач быстро и надежно.">
     
-    <!-- Настройки для отображения ссылки в соцсетях и мессенджерах (Telegram, Viber) -->
-    <meta property="og:title" content="Биржа Услуг — Сервис Поиска Специалистов">
-    <meta property="og:description" content="Опубликуйте заказ и выбирайте среди предложений лучших мастеров.">
-    <meta property="og:type" content="website">
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,7 +15,7 @@
     <!-- Шапка сайта -->
     <header class="site-header">
         <div class="header-container">
-            <a href="#" class="logo"><span>Pro</span>Kabanchik</a>
+            <a href="#" class="logo"><span>Cyprus</span> Help</a>
             <nav class="navigation">
                 <a href="#categories-section">Категории</a>
                 <a href="#tasks-section">Все заказы</a>
@@ -30,15 +24,11 @@
         </div>
     </header>
 
-    <!-- Главный баннер (Hero) -->
+    <!-- Главный баннер (Hero) без поля поиска -->
     <section class="hero">
         <div class="hero-inner">
-            <h1>Сервис заказа услуг №1</h1>
-            <p>Освободите время для важного. Переложите рутину на специалистов.</p>
-            <div class="search-wrapper">
-                <input type="text" id="search-input" placeholder="Что необходимо сделать? (например: ремонт авто)">
-                <button id="search-btn">Найти</button>
-            </div>
+            <h1>Сервис заказа услуг на Кипре</h1>
+            <p>Опишите вашу задачу, опубликуйте её и выбирайте лучших мастеров рядом.</p>
         </div>
     </section>
 
@@ -48,10 +38,10 @@
             <h2 class="section-title">Популярные категории</h2>
             <div class="categories-grid">
                 <div class="cat-card" data-category="Клининг">🧹 Уборка и клининг</div>
-                <div class="cat-card" data-category="Сантехника">🚰 Сантехнические работы</div>
-                <div class="cat-card" data-category="Электрика">⚡ Услуги электрика</div>
-                <div class="cat-card" data-category="Курьер">📦 Курьерская доставка</div>
-                <div class="cat-card" data-category="IT">💻 Разработка и IT</div>
+                <div class="cat-card" data-category="Сантехника">🚰 Сантехника</div>
+                <div class="cat-card" data-category="Электрика">⚡ Электрика</div>
+                <div class="cat-card" data-category="Курьер">📦 Доставка и логистика</div>
+                <div class="cat-card" data-category="IT">💻 IT и разработка</div>
                 <div class="cat-card" data-category="Ремонт">🛠️ Ремонт техники</div>
             </div>
         </div>
@@ -65,7 +55,7 @@
             <section id="tasks-section" class="tasks-column">
                 <h2 class="section-title">Актуальные заказы на сегодня</h2>
                 <div id="tasks-list">
-                    <!-- Задания будут загружаться сюда автоматически через JavaScript -->
+                    <!-- Задания загружаются сюда автоматически -->
                 </div>
             </section>
 
@@ -78,29 +68,29 @@
                     <form id="create-task-form">
                         <div class="form-group">
                             <label for="task-title">Что нужно сделать?</label>
-                            <input type="text" id="task-title" required placeholder="Например: Повесить люстру в зале">
+                            <input type="text" id="task-title" required placeholder="Например: Починить кондиционер">
                         </div>
 
                         <div class="form-group">
                             <label for="task-cat">Выберите категорию</label>
                             <select id="task-cat">
-                                <option value="Сантехника">🚰 Сантехнические работы</option>
-                                <option value="Электрика">⚡ Услуги электрика</option>
+                                <option value="Сантехника">🚰 Сантехника</option>
+                                <option value="Электрика">⚡ Электрика</option>
                                 <option value="Клининг">🧹 Уборка и клининг</option>
-                                <option value="Курьер">📦 Курьерская доставка</option>
-                                <option value="IT">💻 Разработка и IT</option>
+                                <option value="Курьер">📦 Доставка и логистика</option>
+                                <option value="IT">💻 IT и разработка</option>
                                 <option value="Ремонт">🛠️ Ремонт техники</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="task-budget">Ваш бюджет (грн)</label>
-                            <input type="number" id="task-budget" required placeholder="Цена, которую готовы заплатить">
+                            <label for="task-budget">Ваш бюджет (€)</label>
+                            <input type="number" id="task-budget" required placeholder="Цена в евро">
                         </div>
 
                         <div class="form-group">
                             <label for="task-desc">Детальное описание задачи</label>
-                            <textarea id="task-desc" rows="4" required placeholder="Укажите сроки, адрес или важные нюансы для мастера..."></textarea>
+                            <textarea id="task-desc" rows="4" required placeholder="Укажите город, сроки или важные нюансы для мастера..."></textarea>
                         </div>
 
                         <button type="submit" class="btn-submit">Разместить заказ</button>
@@ -111,9 +101,8 @@
         </div>
     </main>
 
-    <!-- Подвал сайта -->
-    <   <footer class="site-footer">
-        <p>&copy; 2026 ProKabanchik Marketplace. Все права защищены. Сайт оптимизирован для поисковых систем Google.</p>
+    <footer class="site-footer">
+        <p>&copy; 2026 Cyprus Help Marketplace. Все права защищены.</p>
     </footer>
 
     <script src="script.js"></script>
