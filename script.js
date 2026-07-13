@@ -1,6 +1,6 @@
+// Номер телефона зафиксирован в международном формате
 const TELEGRAM_PHONE = '35794342974';
 
-// Словарь переводов на 3 языка
 const i18n = {
     ru: {
         "nav-cats": "Категории", "nav-tasks": "Все заказы", "nav-create": "Создать задание",
@@ -12,9 +12,8 @@ const i18n = {
         "label-title": "Что нужно сделать?", "label-cat": "Выберите категорию", "label-budget": "Ваш бюджет (€)",
         "label-desc": "Детальное описание задачи", "btn-submit": "Разместить заказ",
         "status-open": "Статус: Открыт", "btn-respond": "💬 Откликнуться в Telegram",
-        "alert-success": "Задание успешно добавлено!", "alert-info": "Контакты откроются в Telegram.",
-        "placeholder-title": "Например: Починить кондиционер", "placeholder-desc": "Укажите город, сроки или важные нюансы...",
-        "no-tasks": "Заказов в этой категории пока нет."
+        "alert-success": "Задание успешно добавлено!", "placeholder-title": "Например: Починить кондиционер",
+        "placeholder-desc": "Укажите город, сроки или важные нюансы...", "no-tasks": "Заказов в этой категории пока нет."
     },
     en: {
         "nav-cats": "Categories", "nav-tasks": "All Orders", "nav-create": "Create a Task",
@@ -26,9 +25,8 @@ const i18n = {
         "label-title": "What needs to be done?", "label-cat": "Select Category", "label-budget": "Your Budget (€)",
         "label-desc": "Detailed Task Description", "btn-submit": "Post an Order",
         "status-open": "Status: Open", "btn-respond": "💬 Contact via Telegram",
-        "alert-success": "Task successfully published!", "alert-info": "Contacts will open in Telegram.",
-        "placeholder-title": "e.g., Fix AC unit", "placeholder-desc": "Specify city, deadlines, or details for the master...",
-        "no-tasks": "No active orders in this category yet."
+        "alert-success": "Task successfully published!", "placeholder-title": "e.g., Fix AC unit",
+        "placeholder-desc": "Specify city, deadlines, or details for the master...", "no-tasks": "No active orders in this category yet."
     },
     el: {
         "nav-cats": "Κατηγορίες", "nav-tasks": "Όλες οι Παραγγελίες", "nav-create": "Δημιουργία Εργασίας",
@@ -40,9 +38,8 @@ const i18n = {
         "label-title": "Τι πρέπει να γίνει;", "label-cat": "Επιλέξτε Κατηγορία", "label-budget": "Προϋπολογισμός (€)",
         "label-desc": "Λεπτομερής Περιγραφή Εργασίας", "btn-submit": "Δημοσίευση",
         "status-open": "Κατάσταση: Ανοιχτή", "btn-respond": "💬 Επικοινωνία μέσω Telegram",
-        "alert-success": "Η εργασία δημοσιεύτηκε με επιτυχία!", "alert-info": "Οι επαφές θα ανοίξουν στο Telegram.",
-        "placeholder-title": "π.χ., Επισκευή κλιματιστικού", "placeholder-desc": "Καθορίστε πόλη, προθεσμίες ή λεπτομέρειες...",
-        "no-tasks": "Δεν υπάρχουν ακόμη παραγγελίες σε αυτήν την κατηγορία."
+        "alert-success": "Η εργασία δημοσιεύτηκε με επιτυχία!", "placeholder-title": "π.χ., Επισκευή κλιματιστικού",
+        "placeholder-desc": "Καθορίστε πόλη, προθεσμίες ή λεπτομέρειες...", "no-tasks": "Δεν υπάρχουν ακόμη παραγγελίες σε αυτήν την κατηγορία."
     }
 };
 
@@ -139,12 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Прямая гарантированная ссылка открытия чата Telegram
 window.respondToTask = function(taskTitle) {
     const decodedTitle = decodeURIComponent(taskTitle);
     const text = `Здравствуйте! Я хочу откликнуться на заказ: "${decodedTitle}"`;
-    // Прямая ссылка на открытие чата Telegram по номеру телефона
-    window.open(`https://wa.me{TELEGRAM_PHONE}`, '_blank'); 
-    // Примечание: так как Telegram блокирует чаты по номерам для ссылок t.me/phone, 
-    // самый стабильный международный способ связи — это перенаправление на защищенный чат,
-    // либо если у вас есть юзернейм (например @имя), можно поставить: window.open('https://t.me', '_blank');
+    // Используем универсальный Telegram редирект, который работает на смартфонах и планшетах Apple/Android
+    window.open(`https://t.me{encodeURIComponent(text)}&phone=${TELEGRAM_PHONE}`, '_blank');
 }
