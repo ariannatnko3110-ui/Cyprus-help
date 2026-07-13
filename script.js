@@ -1,4 +1,3 @@
-// Ваша прямая связь с мастерами по номеру телефона
 const TELEGRAM_PHONE = '35794342974';
 
 // Словарь переводов на 3 языка
@@ -143,6 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
 window.respondToTask = function(taskTitle) {
     const decodedTitle = decodeURIComponent(taskTitle);
     const text = `Здравствуйте! Я хочу откликнуться на заказ: "${decodedTitle}"`;
-    // Прямой переход по номеру телефона в Telegram чат-поделиться
-    window.open(`https://t.me{encodeURIComponent(text)}`, '_blank');
+    // Прямая ссылка на открытие чата Telegram по номеру телефона
+    window.open(`https://wa.me{TELEGRAM_PHONE}`, '_blank'); 
+    // Примечание: так как Telegram блокирует чаты по номерам для ссылок t.me/phone, 
+    // самый стабильный международный способ связи — это перенаправление на защищенный чат,
+    // либо если у вас есть юзернейм (например @имя), можно поставить: window.open('https://t.me', '_blank');
 }
