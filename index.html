@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Настройки для Google -->
-    <title>Cyprus Help — Биржа услуг и поиска мастеров на Кипре</title>
-    <meta name="description" content="Удобный сервис поиска проверенных специалистов на Кипре. Находите мастеров для любых задач быстро и надежно.">
-    
+    <title>Cyprus Help</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,34 +11,42 @@
     <!-- Шапка сайта -->
     <header class="site-header">
         <div class="header-container">
+            <!-- Переключатель языков теперь слева -->
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ru">RU</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="el">EL</button>
+            </div>
+
             <a href="#" class="logo"><span>Cyprus</span> Help</a>
+            
             <nav class="navigation">
-                <a href="#categories-section">Категории</a>
-                <a href="#tasks-section">Все заказы</a>
-                <a href="#order-section" class="btn-primary">Создать задание</a>
+                <a href="#categories-section" data-i18n="nav-cats">Категории</a>
+                <a href="#tasks-section" data-i18n="nav-tasks">Все заказы</a>
+                <a href="#order-section" class="btn-primary" data-i18n="nav-create">Создать задание</a>
             </nav>
         </div>
     </header>
 
-    <!-- Главный баннер (Hero) без поля поиска -->
+    <!-- Главный баннер -->
     <section class="hero">
         <div class="hero-inner">
-            <h1>Сервис заказа услуг на Кипре</h1>
-            <p>Опишите вашу задачу, опубликуйте её и выбирайте лучших мастеров рядом.</p>
+            <h1 data-i18n="hero-title">Сервис заказа услуг на Кипре</h1>
+            <p data-i18n="hero-subtitle">Опишите вашу задачу, опубликуйте её и выбирайте лучших мастеров рядом.</p>
         </div>
     </section>
 
     <!-- Сетка категорий -->
     <section id="categories-section" class="categories">
         <div class="section-container">
-            <h2 class="section-title">Популярные категории</h2>
+            <h2 class="section-title" data-i18n="cats-title">Популярные категории</h2>
             <div class="categories-grid">
-                <div class="cat-card" data-category="Клининг">🧹 Уборка и клининг</div>
-                <div class="cat-card" data-category="Сантехника">🚰 Сантехника</div>
-                <div class="cat-card" data-category="Электрика">⚡ Электрика</div>
-                <div class="cat-card" data-category="Курьер">📦 Доставка и логистика</div>
-                <div class="cat-card" data-category="IT">💻 IT и разработка</div>
-                <div class="cat-card" data-category="Ремонт">🛠️ Ремонт техники</div>
+                <div class="cat-card" data-category="Клининг">🧹 <span data-i18n="cat-cleaning">Уборка и клининг</span></div>
+                <div class="cat-card" data-category="Сантехника">🚰 <span data-i18n="cat-plumbing">Сантехника</span></div>
+                <div class="cat-card" data-category="Электрика">⚡ <span data-i18n="cat-electric">Электрика</span></div>
+                <div class="cat-card" data-category="Курьер">📦 <span data-i18n="cat-delivery">Доставка и логистика</span></div>
+                <div class="cat-card" data-category="IT">💻 <span data-i18n="cat-it">IT и разработка</span></div>
+                <div class="cat-card" data-category="Ремонт">🛠️ <span data-i18n="cat-repair">Ремонт техники</span></div>
             </div>
         </div>
     </section>
@@ -53,47 +57,47 @@
             
             <!-- Левая колонка: Список заданий -->
             <section id="tasks-section" class="tasks-column">
-                <h2 class="section-title">Актуальные заказы на сегодня</h2>
+                <h2 class="section-title" data-i18n="tasks-title">Актуальные заказы на сегодня</h2>
                 <div id="tasks-list">
-                    <!-- Задания загружаются сюда автоматически -->
+                    <!-- Задания загружаются автоматически -->
                 </div>
             </section>
 
             <!-- Правая колонка: Форма -->
             <section id="order-section" class="form-column">
                 <div class="sticky-form-box">
-                    <h3>Опубликовать новое задание</h3>
-                    <p class="form-subtitle">Это бесплатно и займет не более минуты</p>
+                    <h3 data-i18n="form-title">Опубликовать новое задание</h3>
+                    <p class="form-subtitle" data-i18n="form-subtitle">Это бесплатно и займет не более минуты</p>
                     
                     <form id="create-task-form">
                         <div class="form-group">
-                            <label for="task-title">Что нужно сделать?</label>
-                            <input type="text" id="task-title" required placeholder="Например: Починить кондиционер">
+                            <label for="task-title" data-i18n="label-title">Что нужно сделать?</label>
+                            <input type="text" id="task-title" required placeholder="...">
                         </div>
 
                         <div class="form-group">
-                            <label for="task-cat">Выберите категорию</label>
+                            <label for="task-cat" data-i18n="label-cat">Выберите категорию</label>
                             <select id="task-cat">
-                                <option value="Сантехника">🚰 Сантехника</option>
-                                <option value="Электрика">⚡ Электрика</option>
-                                <option value="Клининг">🧹 Уборка и клининг</option>
-                                <option value="Курьер">📦 Доставка и логистика</option>
-                                <option value="IT">💻 IT и разработка</option>
-                                <option value="Ремонт">🛠️ Ремонт техники</option>
+                                <option value="Сантехника" data-i18n="cat-plumbing">Сантехника</option>
+                                <option value="Электрика" data-i18n="cat-electric">Электрика</option>
+                                <option value="Клининг" data-i18n="cat-cleaning">Уборка и клининг</option>
+                                <option value="Курьер" data-i18n="cat-delivery">Доставка и логистика</option>
+                                <option value="IT" data-i18n="cat-it">IT и разработка</option>
+                                <option value="Ремонт" data-i18n="cat-repair">Ремонт техники</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="task-budget">Ваш бюджет (€)</label>
-                            <input type="number" id="task-budget" required placeholder="Цена в евро">
+                            <label for="task-budget" data-i18n="label-budget">Ваш бюджет (€)</label>
+                            <input type="number" id="task-budget" required placeholder="€">
                         </div>
 
                         <div class="form-group">
-                            <label for="task-desc">Детальное описание задачи</label>
-                            <textarea id="task-desc" rows="4" required placeholder="Укажите город, сроки или важные нюансы для мастера..."></textarea>
+                            <label for="task-desc" data-i18n="label-desc">Детальное описание задачи</label>
+                            <textarea id="task-desc" rows="4" required placeholder="..."></textarea>
                         </div>
 
-                        <button type="submit" class="btn-submit">Разместить заказ</button>
+                        <button type="submit" class="btn-submit" data-i18n="btn-submit">Разместить заказ</button>
                     </form>
                 </div>
             </section>
@@ -102,7 +106,7 @@
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2026 Cyprus Help Marketplace. Все права защищены.</p>
+        <p>&copy; 2026 Cyprus Help Marketplace.</p>
     </footer>
 
     <script src="script.js"></script>
