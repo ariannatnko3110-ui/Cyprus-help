@@ -20,7 +20,7 @@ body {
     line-height: 1.5;
 }
 
-/* Шапка */
+/* Шапка сайта с жесткой фиксацией элементов */
 .site-header {
     background: #fff;
     border-bottom: 1px solid var(--border-color);
@@ -31,14 +31,15 @@ body {
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 15px 20px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на смартфонах */
+    gap: 10px;
 }
 .logo {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 800;
     color: var(--dark);
     text-decoration: none;
@@ -47,25 +48,23 @@ body {
     color: #0088cc;
 }
 
-/* Языковой переключатель — теперь всегда на виду справа */
+/* Языковой переключатель */
 .lang-switcher {
     display: flex;
-    gap: 3px;
+    gap: 2px;
     background: #edf2f7;
     padding: 3px;
     border-radius: 6px;
-    margin-left: auto;
 }
 .lang-btn {
     background: none;
     border: none;
-    padding: 6px 10px;
-    font-size: 13px;
+    padding: 5px 8px;
+    font-size: 12px;
     font-weight: bold;
     color: var(--dark);
     cursor: pointer;
     border-radius: 4px;
-    white-space: nowrap;
 }
 .lang-btn.active {
     background: #fff;
@@ -76,32 +75,46 @@ body {
 .navigation {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 .navigation a {
     text-decoration: none;
     color: var(--dark);
-    margin-left: 20px;
     font-weight: 500;
+    font-size: 15px;
 }
 .navigation .btn-primary {
     background: #0088cc;
     color: #fff;
-    padding: 8px 16px;
+    padding: 8px 14px;
     border-radius: 6px;
 }
 .navigation .btn-primary:hover {
     background: #0077b5;
 }
 
+/* Адаптивность шапки для планшетов */
+@media (max-width: 768px) {
+    .header-container {
+        justify-content: space-between;
+    }
+    .navigation {
+        gap: 10px;
+    }
+    .navigation a {
+        font-size: 14px;
+    }
+}
+
 /* Баннер */
 .hero {
     background: linear-gradient(135deg, #e0f2f1 0%, #e8f5e9 100%);
     color: var(--dark);
-    padding: 50px 20px;
+    padding: 40px 20px;
     text-align: center;
 }
 .hero h1 {
-    font-size: 32px;
+    font-size: 30px;
     margin-bottom: 10px;
     color: #1e3a8a;
 }
@@ -113,12 +126,12 @@ body {
 /* Категории */
 .section-container {
     max-width: 1200px;
-    margin: 40px auto 0;
+    margin: 30px auto 0;
     padding: 0 20px;
 }
 .section-title {
-    font-size: 22px;
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 15px;
     position: relative;
     padding-left: 15px;
 }
@@ -134,31 +147,32 @@ body {
 }
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
 }
 .cat-card {
     background: #fff;
-    padding: 15px;
+    padding: 12px;
     border-radius: 8px;
     border: 1px solid var(--border-color);
     text-align: center;
     cursor: pointer;
     font-weight: 500;
+    font-size: 14px;
 }
 .cat-card:hover {
     border-color: #0088cc;
     background: #f0f9ff;
 }
 
-/* Макет контента */
+/* Контент */
 .content-container {
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 30px auto;
     padding: 0 20px;
     display: grid;
     grid-template-columns: 7fr 4fr;
-    gap: 30px;
+    gap: 25px;
 }
 
 /* Карточки заказов */
@@ -204,60 +218,47 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
 }
 .btn-respond:hover { background: #0077b5; }
 
-/* Блок формы */
+/* Форма */
 .sticky-form-box {
     background: #fff;
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    padding: 25px;
+    padding: 20px;
     position: sticky;
     top: 90px;
 }
 .form-subtitle {
     font-size: 13px;
     color: var(--gray-text);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
-.form-group { margin-bottom: 15px; }
-.form-group label { display: block; margin-bottom: 6px; font-weight: 500; font-size: 14px; }
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; margin-bottom: 4px; font-weight: 500; font-size: 13px; }
 .form-group input, .form-group select, .form-group textarea {
-    width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px;
+    width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px;
 }
 .btn-submit {
     width: 100%; background: #10b981; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer;
 }
 .btn-submit:hover { background: #059669; }
-.site-footer { background: var(--dark); color: #fff; text-align: center; padding: 30px 20px; margin-top: 60px; }
+.site-footer { background: var(--dark); color: #fff; text-align: center; padding: 25px 20px; margin-top: 40px; }
 
-/* Разделение формы и списка на мобильных экранах и планшетах */
+/* Фикс адаптивности контента */
 @media (max-width: 900px) {
     .content-container { 
         grid-template-columns: 1fr; 
-        gap: 40px;
+        gap: 30px;
     }
     .form-column {
         border-top: 2px dashed var(--border-color);
-        padding-top: 30px;
+        padding-top: 20px;
     }
 }
-
-@media (max-width: 650px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .lang-switcher {
-        margin: 5px 0;
-    }
-    .navigation a {
-        margin: 0 10px;
-    }
-}
-
 #tasks-list {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
