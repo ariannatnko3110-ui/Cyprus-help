@@ -1,0 +1,275 @@
+:root {
+    --primary: #ffc107;
+    --primary-hover: #e0a800;
+    --dark: #1a1a1a;
+    --gray-text: #6c757d;
+    --light-bg: #f4f6f8;
+    --border-color: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--dark);
+    line-height: 1.5;
+}
+
+/* Шапка */
+.site-header {
+    background: #fff;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--dark);
+    text-decoration: none;
+}
+.logo span {
+    background: var(--primary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 2px;
+}
+.navigation a {
+    text-decoration: none;
+    color: var(--dark);
+    margin-left: 20px;
+    font-weight: 500;
+}
+.navigation .btn-primary {
+    background: var(--primary);
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+.navigation .btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+/* Главный баннер */
+.hero {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+}
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+.hero p {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+.search-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 6px;
+    overflow: hidden;
+}
+.search-wrapper input {
+    flex: 1;
+    padding: 16px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+.search-wrapper button {
+    background: var(--primary);
+    border: none;
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.search-wrapper button:hover {
+    background: var(--primary-hover);
+}
+
+/* Категории */
+.section-container {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+}
+.section-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 15px;
+}
+.section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 5px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+}
+.cat-card {
+    background: #fff;
+    padding: 20px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+.cat-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Контент и Сетка страниц */
+.content-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 7fr 4fr;
+    gap: 30px;
+}
+
+@media (max-width: 900px) {
+    .content-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Карточки задач */
+.task-card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+.task-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+.task-card h3 {
+    font-size: 18px;
+    color: #1a56db;
+}
+.task-budget {
+    background: #edf7ed;
+    color: #1e4620;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.task-info {
+    font-size: 13px;
+    color: var(--gray-text);
+    margin-bottom: 12px;
+}
+.task-text {
+    color: #4a5568;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+.btn-respond {
+    background: var(--dark);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.btn-respond:hover {
+    background: #333;
+}
+
+/* Форма заказа */
+.sticky-form-box {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    position: sticky;
+    top: 90px;
+}
+.form-subtitle {
+    font-size: 13px;
+    color: var(--gray-text);
+    margin-bottom: 20px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 14px;
+}
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--primary);
+}
+.btn-submit {
+    width: 100%;
+    background: var(--primary);
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.btn-submit:hover {
+    background: var(--primary-hover);
+}
+
+/* Футер */
+.site-footer {
+    background: var(--dark);
+    color: #fff;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 14px;
+    margin-top: 60px;
+    opacity: 0.8;
+}
