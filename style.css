@@ -1,11 +1,10 @@
 :root {
-    --primary: #8bc34a; /* Мягкий салатовый акцент */
+    --primary: #8bc34a;
     --primary-hover: #7cb342;
     --dark: #2c3e50;
     --gray-text: #7f8c8d;
     --light-bg: #f8fafc;
     --border-color: #e2e8f0;
-    --accent-blue: #e0f2f1; /* Нежный пастельный фон */
 }
 
 * {
@@ -36,6 +35,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
 }
 .logo {
     font-size: 24px;
@@ -44,7 +44,38 @@ body {
     text-decoration: none;
 }
 .logo span {
-    color: #0088cc; /* Фирменный цвет Telegram-акцента */
+    color: #0088cc;
+}
+
+/* Языковой переключатель — теперь всегда на виду справа */
+.lang-switcher {
+    display: flex;
+    gap: 3px;
+    background: #edf2f7;
+    padding: 3px;
+    border-radius: 6px;
+    margin-left: auto;
+}
+.lang-btn {
+    background: none;
+    border: none;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--dark);
+    cursor: pointer;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+.lang-btn.active {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    color: #0088cc;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
 }
 .navigation a {
     text-decoration: none;
@@ -54,7 +85,6 @@ body {
 }
 .navigation .btn-primary {
     background: #0088cc;
-    color: #white;
     color: #fff;
     padding: 8px 16px;
     border-radius: 6px;
@@ -63,20 +93,20 @@ body {
     background: #0077b5;
 }
 
-/* Главный баннер */
+/* Баннер */
 .hero {
     background: linear-gradient(135deg, #e0f2f1 0%, #e8f5e9 100%);
     color: var(--dark);
-    padding: 60px 20px;
+    padding: 50px 20px;
     text-align: center;
 }
 .hero h1 {
-    font-size: 36px;
+    font-size: 32px;
     margin-bottom: 10px;
     color: #1e3a8a;
 }
 .hero p {
-    font-size: 18px;
+    font-size: 16px;
     opacity: 0.8;
 }
 
@@ -115,15 +145,13 @@ body {
     text-align: center;
     cursor: pointer;
     font-weight: 500;
-    transition: all 0.2s;
 }
 .cat-card:hover {
-    transform: translateY(-2px);
     border-color: #0088cc;
     background: #f0f9ff;
 }
 
-/* Контент */
+/* Макет контента */
 .content-container {
     max-width: 1200px;
     margin: 40px auto;
@@ -133,20 +161,13 @@ body {
     gap: 30px;
 }
 
-@media (max-width: 900px) {
-    .content-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Карточки задач */
+/* Карточки заказов */
 .task-card {
     background: #fff;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 .task-top {
     display: flex;
@@ -183,16 +204,10 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
 }
-.btn-respond:hover {
-    background: #0077b5;
-}
+.btn-respond:hover { background: #0077b5; }
 
-/* Форма заказа */
+/* Блок формы */
 .sticky-form-box {
     background: #fff;
     border: 1px solid var(--border-color);
@@ -200,54 +215,48 @@ body {
     padding: 25px;
     position: sticky;
     top: 90px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
 .form-subtitle {
     font-size: 13px;
     color: var(--gray-text);
     margin-bottom: 20px;
 }
-.form-group {
-    margin-bottom: 15px;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 500;
-    font-size: 14px;
-}
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 6px; font-weight: 500; font-size: 14px; }
 .form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font-size: 14px;
-    outline: none;
-}
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: #0088cc;
+    width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px;
 }
 .btn-submit {
-    width: 100%;
-    background: #10b981;
-    color: white;
-    border: none;
-    padding: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 10px;
+    width: 100%; background: #10b981; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer;
 }
-.btn-submit:hover {
-    background: #059669;
+.btn-submit:hover { background: #059669; }
+.site-footer { background: var(--dark); color: #fff; text-align: center; padding: 30px 20px; margin-top: 60px; }
+
+/* Разделение формы и списка на мобильных экранах и планшетах */
+@media (max-width: 900px) {
+    .content-container { 
+        grid-template-columns: 1fr; 
+        gap: 40px;
+    }
+    .form-column {
+        border-top: 2px dashed var(--border-color);
+        padding-top: 30px;
+    }
 }
 
-.site-footer {
-    background: var(--dark);
-    color: #fff;
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 14px;
-    margin-top: 60px;
+@media (max-width: 650px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .lang-switcher {
+        margin: 5px 0;
+    }
+    .navigation a {
+        margin: 0 10px;
+    }
 }
+
+#tasks-list {
+    margin-bottom: 20px;
