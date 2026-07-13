@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Настройки для Google -->
+    <title>Биржа Услуг и Заказов — Найдите Мастера Рядом</title>
+    <meta name="description" content="Удобный сервис поиска проверенных специалистов для любых задач: ремонт, уборка, ИТ-услуги, доставка. Опубликуйте задание за 1 минуту!">
+    <meta name="keywords" content="заказать услуги, найти мастера, сантехник, электрик, ремонт квартир, биржа заказов">
+    
+    <!-- Настройки для отображения ссылки в соцсетях и мессенджерах (Telegram, Viber) -->
+    <meta property="og:title" content="Биржа Услуг — Сервис Поиска Специалистов">
+    <meta property="og:description" content="Опубликуйте заказ и выбирайте среди предложений лучших мастеров.">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="logo"><span>Pro</span>Kabanchik</a>
+            <nav class="navigation">
+                <a href="#categories-section">Категории</a>
+                <a href="#tasks-section">Все заказы</a>
+                <a href="#order-section" class="btn-primary">Создать задание</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный баннер (Hero) -->
+    <section class="hero">
+        <div class="hero-inner">
+            <h1>Сервис заказа услуг №1</h1>
+            <p>Освободите время для важного. Переложите рутину на специалистов.</p>
+            <div class="search-wrapper">
+                <input type="text" id="search-input" placeholder="Что необходимо сделать? (например: ремонт авто)">
+                <button id="search-btn">Найти</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сетка категорий -->
+    <section id="categories-section" class="categories">
+        <div class="section-container">
+            <h2 class="section-title">Популярные категории</h2>
+            <div class="categories-grid">
+                <div class="cat-card" data-category="Клининг">🧹 Уборка и клининг</div>
+                <div class="cat-card" data-category="Сантехника">🚰 Сантехнические работы</div>
+                <div class="cat-card" data-category="Электрика">⚡ Услуги электрика</div>
+                <div class="cat-card" data-category="Курьер">📦 Курьерская доставка</div>
+                <div class="cat-card" data-category="IT">💻 Разработка и IT</div>
+                <div class="cat-card" data-category="Ремонт">🛠️ Ремонт техники</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+        <div class="content-container">
+            
+            <!-- Левая колонка: Список заданий -->
+            <section id="tasks-section" class="tasks-column">
+                <h2 class="section-title">Актуальные заказы на сегодня</h2>
+                <div id="tasks-list">
+                    <!-- Задания будут загружаться сюда автоматически через JavaScript -->
+                </div>
+            </section>
+
+            <!-- Правая колонка: Форма -->
+            <section id="order-section" class="form-column">
+                <div class="sticky-form-box">
+                    <h3>Опубликовать новое задание</h3>
+                    <p class="form-subtitle">Это бесплатно и займет не более минуты</p>
+                    
+                    <form id="create-task-form">
+                        <div class="form-group">
+                            <label for="task-title">Что нужно сделать?</label>
+                            <input type="text" id="task-title" required placeholder="Например: Повесить люстру в зале">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="task-cat">Выберите категорию</label>
+                            <select id="task-cat">
+                                <option value="Сантехника">🚰 Сантехнические работы</option>
+                                <option value="Электрика">⚡ Услуги электрика</option>
+                                <option value="Клининг">🧹 Уборка и клининг</option>
+                                <option value="Курьер">📦 Курьерская доставка</option>
+                                <option value="IT">💻 Разработка и IT</option>
+                                <option value="Ремонт">🛠️ Ремонт техники</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="task-budget">Ваш бюджет (грн)</label>
+                            <input type="number" id="task-budget" required placeholder="Цена, которую готовы заплатить">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="task-desc">Детальное описание задачи</label>
+                            <textarea id="task-desc" rows="4" required placeholder="Укажите сроки, адрес или важные нюансы для мастера..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Разместить заказ</button>
+                    </form>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Подвал сайта -->
+    <   <footer class="site-footer">
+        <p>&copy; 2026 ProKabanchik Marketplace. Все права защищены. Сайт оптимизирован для поисковых систем Google.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
