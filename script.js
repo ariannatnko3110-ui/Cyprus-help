@@ -1,253 +1,148 @@
-:root {
-    --primary: #8bc34a; /* Мягкий салатовый акцент */
-    --primary-hover: #7cb342;
-    --dark: #2c3e50;
-    --gray-text: #7f8c8d;
-    --light-bg: #f8fafc;
-    --border-color: #e2e8f0;
-    --accent-blue: #e0f2f1; /* Нежный пастельный фон */
-}
+// Номер телефона успешно привязан
+const TELEGRAM_PHONE = '35794342974';
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-body {
-    background-color: var(--light-bg);
-    color: var(--dark);
-    line-height: 1.5;
-}
-
-/* Шапка */
-.site-header {
-    background: #fff;
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.logo {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--dark);
-    text-decoration: none;
-}
-.logo span {
-    color: #0088cc; /* Фирменный цвет Telegram-акцента */
-}
-.navigation a {
-    text-decoration: none;
-    color: var(--dark);
-    margin-left: 20px;
-    font-weight: 500;
-}
-.navigation .btn-primary {
-    background: #0088cc;
-    color: #white;
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 6px;
-}
-.navigation .btn-primary:hover {
-    background: #0077b5;
-}
-
-/* Главный баннер */
-.hero {
-    background: linear-gradient(135deg, #e0f2f1 0%, #e8f5e9 100%);
-    color: var(--dark);
-    padding: 60px 20px;
-    text-align: center;
-}
-.hero h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-    color: #1e3a8a;
-}
-.hero p {
-    font-size: 18px;
-    opacity: 0.8;
-}
-
-/* Категории */
-.section-container {
-    max-width: 1200px;
-    margin: 40px auto 0;
-    padding: 0 20px;
-}
-.section-title {
-    font-size: 22px;
-    margin-bottom: 20px;
-    position: relative;
-    padding-left: 15px;
-}
-.section-title::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 4px;
-    bottom: 4px;
-    width: 4px;
-    background: #0088cc;
-    border-radius: 2px;
-}
-.categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 15px;
-}
-.cat-card {
-    background: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    text-align: center;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s;
-}
-.cat-card:hover {
-    transform: translateY(-2px);
-    border-color: #0088cc;
-    background: #f0f9ff;
-}
-
-/* Контент */
-.content-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 7fr 4fr;
-    gap: 30px;
-}
-
-@media (max-width: 900px) {
-    .content-container {
-        grid-template-columns: 1fr;
+// Словарь переводов
+const i18n = {
+    ru: {
+        "nav-cats": "Категории", "nav-tasks": "Все заказы", "nav-create": "Создать задание",
+        "hero-title": "Сервис заказа услуг на Кипре", "hero-subtitle": "Опишите вашу задачу, опубликуйте её и выбирайте лучших мастеров рядом.",
+        "cats-title": "Популярные категории", "tasks-title": "Актуальные заказы на сегодня",
+        "cat-cleaning": "Уборка и клининг", "cat-plumbing": "Сантехника", "cat-electric": "Электрика",
+        "cat-delivery": "Доставка и логистика", "cat-it": "IT и разработка", "cat-repair": "Ремонт техники",
+        "form-title": "Опубликовать новое задание", "form-subtitle": "Это бесплатно и займет не более минуты",
+        "label-title": "Что нужно сделать?", "label-cat": "Выберите категорию", "label-budget": "Ваш бюджет (€)",
+        "label-desc": "Детальное описание задачи", "btn-submit": "Разместить заказ",
+        "status-open": "Статус: Открыт", "btn-respond": "💬 Откликнуться в Telegram",
+        "alert-success": "Задание успешно добавлено!", "alert-info": "Контакты откроются в Telegram.",
+        "placeholder-title": "Например: Починить кондиционер", "placeholder-desc": "Укажите город, сроки или важные нюансы...",
+        "no-tasks": "Заказов в этой категории пока нет."
+    },
+    en: {
+        "nav-cats": "Categories", "nav-tasks": "All Orders", "nav-create": "Create a Task",
+        "hero-title": "Services & Handymen in Cyprus", "hero-subtitle": "Describe your task, publish it and choose the best local handymen.",
+        "cats-title": "Popular Categories", "tasks-title": "Active Orders Today",
+        "cat-cleaning": "Cleaning Services", "cat-plumbing": "Plumbing", "cat-electric": "Electrical Works",
+        "cat-delivery": "Delivery & Logistics", "cat-it": "IT & Development", "cat-repair": "Appliance Repair",
+        "form-title": "Publish a New Task", "form-subtitle": "It's free and takes less than a minute",
+        "label-title": "What needs to be done?", "label-cat": "Select Category", "label-budget": "Your Budget (€)",
+        "label-desc": "Detailed Task Description", "btn-submit": "Post an Order",
+        "status-open": "Status: Open", "btn-respond": "💬 Contact via Telegram",
+        "alert-success": "Task successfully published!", "alert-info": "Contacts will open in Telegram.",
+        "placeholder-title": "e.g., Fix AC unit", "placeholder-desc": "Specify city, deadlines, or details for the master...",
+        "no-tasks": "No active orders in this category yet."
+    },
+    el: {
+        "nav-cats": "Κατηγορίες", "nav-tasks": "Όλες οι Παραγγελίες", "nav-create": "Δημιουργία Εργασίας",
+        "hero-title": "Υπηρεσίες & Μάστορες στην Κύπρο", "hero-subtitle": "Περιγράψτε την εργασία σας, δημοσιεύστε την και επιλέξτε τους καλύτερους.",
+        "cats-title": "Δημοφιλείς Κατηγορίες", "tasks-title": "Ενεργές Παραγγελίες Σήμερα",
+        "cat-cleaning": "Καθαρισμός", "cat-plumbing": "Υδραυλικά", "cat-electric": "Ηλεκτρολογικά",
+        "cat-delivery": "Παράδοση & Logistics", "cat-it": "IT & Ανάπτυξη", "cat-repair": "Επισκευή Συσκευών",
+        "form-title": "Δημοσιεύστε μια Εργασία", "form-subtitle": "Είναι δωρεάν και παίρνει λιγότερο από ένα λεπτό",
+        "label-title": "Τι πρέπει να γίνει;", "label-cat": "Επιλέξτε Κατηγορία", "label-budget": "Προϋπολογισμός (€)",
+        "label-desc": "Λεπτομερής Περιγραφή Εργασίας", "btn-submit": "Δημοσίευση",
+        "status-open": "Κατάσταση: Ανοιχτή", "btn-respond": "💬 Επικοινωνία μέσω Telegram",
+        "alert-success": "Η εργασία δημοσιεύτηκε με επιτυχία!", "alert-info": "Οι επαφές θα ανοίξουν στο Telegram.",
+        "placeholder-title": "π.χ., Επισκευή κλιματιστικού", "placeholder-desc": "Καθορίστε πόλη, προθεσμίες ή λεπτομέρειες...",
+        "no-tasks": "Δεν υπάρχουν ακόμη παραγγελίες σε αυτήν την κατηγορία."
     }
+};
+
+let currentLang = localStorage.getItem('cyprus_lang') || 'ru';
+
+const defaultTasks = [
+    { id: 1, title: "Генеральная уборка апартаментов в Лимассоле", category: "Клининг", budget: "90", desc: "Необходимо убрать 1-спальную квартиру после выезда жильцов." },
+    { id: 2, title: "Установка и настройка роутера", category: "IT", budget: "40", desc: "Нужно подключить новый роутер от Cyta и настроить Wi-Fi." }
+];
+
+let tasks = JSON.parse(localStorage.getItem('cyprus_tasks')) || defaultTasks;
+
+function switchLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('cyprus_lang', lang);
+    
+    document.querySelectorAll('[data-i18n]').forEach(elem => {
+        const key = elem.getAttribute('data-i18n');
+        if (i18n[lang][key]) elem.innerText = i18n[lang][key];
+    });
+
+    const titleInput = document.getElementById('task-title');
+    const descInput = document.getElementById('task-desc');
+    if(titleInput) titleInput.placeholder = i18n[lang]['placeholder-title'];
+    if(descInput) descInput.placeholder = i18n[lang]['placeholder-desc'];
+
+    renderTasks(tasks);
 }
 
-/* Карточки задач */
-.task-card {
-    background: #fff;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-}
-.task-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 8px;
-}
-.task-card h3 {
-    font-size: 18px;
-    color: #1e3a8a;
-}
-.task-budget {
-    background: #e6f4ea;
-    color: #137333;
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-weight: bold;
-}
-.task-info {
-    font-size: 13px;
-    color: var(--gray-text);
-    margin-bottom: 12px;
-}
-.task-text {
-    color: #4a5568;
-    font-size: 15px;
-    margin-bottom: 15px;
-}
-.btn-respond {
-    background: #0088cc;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-.btn-respond:hover {
-    background: #0077b5;
+function renderTasks(tasksToRender) {
+    const listContainer = document.getElementById('tasks-list');
+    if(!listContainer) return;
+    listContainer.innerHTML = '';
+
+    if (tasksToRender.length === 0) {
+        listContainer.innerHTML = `<p style="padding: 20px; color: #777;">${i18n[currentLang]['no-tasks']}</p>`;
+        return;
+    }
+
+    tasksToRender.forEach(task => {
+        const card = document.createElement('div');
+        card.className = 'task-card';
+        card.innerHTML = `
+            <div class="task-top">
+                <h3>${task.title}</h3>
+                <span class="task-budget">${task.budget} €</span>
+            </div>
+            <div class="task-info"><strong>${task.category}</strong> | ${i18n[currentLang]['status-open']}</div>
+            <p class="task-text">${task.desc}</p>
+            <button class="btn-respond" onclick="respondToTask('${encodeURIComponent(task.title)}')">${i18n[currentLang]['btn-respond']}</button>
+        `;
+        listContainer.appendChild(card);
+    });
 }
 
-/* Форма заказа */
-.sticky-form-box {
-    background: #fff;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 25px;
-    position: sticky;
-    top: 90px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-}
-.form-subtitle {
-    font-size: 13px;
-    color: var(--gray-text);
-    margin-bottom: 20px;
-}
-.form-group {
-    margin-bottom: 15px;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 500;
-    font-size: 14px;
-}
-.form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font-size: 14px;
-    outline: none;
-}
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: #0088cc;
-}
-.btn-submit {
-    width: 100%;
-    background: #10b981;
-    color: white;
-    border: none;
-    padding: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-.btn-submit:hover {
-    background: #059669;
-}
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            switchLanguage(this.getAttribute('data-lang'));
+        });
+        if(btn.getAttribute('data-lang') === currentLang) {
+            btn.click();
+        }
+    });
 
-.site-footer {
-    background: var(--dark);
-    color: #fff;
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 14px;
-    margin-top: 60px;
+    const form = document.getElementById('create-task-form');
+    if(form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newTask = {
+                id: Date.now(),
+                title: document.getElementById('task-title').value,
+                category: document.getElementById('task-cat').options[document.getElementById('task-cat').selectedIndex].text,
+                budget: document.getElementById('task-budget').value,
+                desc: document.getElementById('task-desc').value
+            };
+            tasks.unshift(newTask);
+            localStorage.setItem('cyprus_tasks', JSON.stringify(tasks));
+            renderTasks(tasks);
+            this.reset();
+            alert(i18n[currentLang]['alert-success']);
+        });
+    }
+
+    document.querySelectorAll('.cat-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const selectedCat = this.getAttribute('data-category');
+            const filtered = tasks.filter(t => t.category.includes(selectedCat) || selectedCat.includes(t.category));
+            renderTasks(filtered);
+            document.getElementById('tasks-section').scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+});
+
+window.respondToTask = function(taskTitle) {
+    const decodedTitle = decodeURIComponent(taskTitle);
+    const text = `Здравствуйте! Я хочу откликнуться на заказ: "${decodedTitle}"`;
+    // Перенаправляем пользователя в Telegram для отправки сообщения на ваш номер
+    window.open(`https://t.me{encodeURIComponent(text)}`, '_blank');
 }
